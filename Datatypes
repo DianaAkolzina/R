@@ -1,0 +1,68 @@
+
+
+# Numeric
+numeric_value <- 3.14
+cat("Numeric value:", numeric_value, "\n")
+
+# Integer
+integer_value <- as.integer(42)
+cat("Integer value:", integer_value, "\n")
+
+# Complex
+complex_value <- 1 + 2i
+cat("Complex value:", complex_value, "\n")
+
+# Logical
+logical_value <- (3 > 2)
+cat("Logical value:", logical_value, "\n")
+
+# Character
+character_value <- "Hello, R!"
+cat("Character value:", character_value, "\n")
+
+# Factor
+gender <- factor(c("Male", "Female", "Male", "Female"), levels = c("Male", "Female"))
+cat("Factor value:\n")
+print(gender)
+
+# Date
+date_value <- as.Date("2021-10-01")
+cat("Date value:", date_value, "\n")
+
+# POSIXct
+posixct_value <- as.POSIXct("2021-09-01 12:34:56")
+cat("POSIXct value:", posixct_value, "\n")
+
+# POSIXlt
+posixlt_value <- as.POSIXlt("2021-09-01 12:34:56")
+cat("POSIXlt value (year):", posixlt_value$year + 1900, "\n")
+
+# Vector
+numeric_vector <- c(1, 2, 3)
+cat("Numeric vector:\n")
+print(numeric_vector)
+
+# Matrix
+matrix_value <- matrix(1:9, nrow = 3, ncol = 3)
+cat("Matrix value:\n")
+print(matrix_value)
+
+# Array
+array_value <- array(1:12, dim = c(2, 3, 2))
+cat("Array value:\n")
+print(array_value)
+
+# List
+list_value <- list(name = "John Doe", age = 30, salary = 50000)
+cat("List value:\n")
+print(list_value)
+
+# Data Frame
+data_frame_value <- data.frame(
+  name = c("John Doe", "Jane Smith"),
+  age = c(30, 28),
+  salary = c(50000, 48000),
+  stringsAsFactors = FALSE
+)
+cat("Data frame value:\n")
+print(data_frame_value)
