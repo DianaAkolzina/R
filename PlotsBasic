@@ -1,0 +1,125 @@
+install.packages("dplyr") 
+# Load necessary libraries
+library(ggplot2)  # For data visualization
+library(dplyr)    # For data manipulation
+
+# Explore the built-in 'mtcars' dataset
+data(mtcars)  # Load the dataset
+head(mtcars)  # Show the first 6 rows of the dataset
+
+# Calculate the mean miles per gallon (mpg) for each number of cylinders
+mean_mpg_by_cylinders <- mtcars %>% 
+  group_by(cyl) %>%          # Group the data by 'cyl' (number of cylinders)
+  summarize(mean_mpg = mean(mpg))  # Calculate the mean 'mpg' for each group
+
+# Print the calculated mean miles per gallon (mpg) for each number of cylinders
+print(mean_mpg_by_cylinders)
+
+# Create a scatter plot of 'mpg' vs 'hp' (horsepower) with points colored by 'cyl' (number of cylinders)
+scatter_plot <- ggplot(mtcars, aes(x = hp, y = mpg, color = as.factor(cyl))) +
+  geom_point() +              # Add points to the plot
+  labs(
+    title = "Miles per Gallon vs Horsepower",
+    x = "Horsepower",
+    y = "Miles per Gallon",
+    color = "Number of Cylinders"
+  ) +
+  theme_minimal()             # Use a minimal theme for the plot
+
+# Display the scatter plot
+dev.new()
+print(scatter_plot)
+dev.off()
+
+# Perform a simple linear regression of 'mpg' on 'hp'
+linear_model <- lm(mpg ~ hp, data = mtcars)  # Fit the linear model
+summary(linear_model)  # Display the summary of the linear model
+
+# Load necessary libraries
+library(ggplot2)
+
+# Use the built-in 'mtcars' dataset
+data(mtcars)
+
+# 1. Basic scatter plot (base R)
+# Plot mpg (Miles per Gallon) against hp (Horsepower)
+dev.new()
+plot(mtcars$hp, mtcars$mpg,
+     main = "Scatter Plot (Base R)",
+     xlab = "Horsepower",
+     ylab = "Miles per Gallon")
+ dev.off()
+
+# 2. Basic scatter plot (ggplot2)
+dev.new()
+scatter_plot <- ggplot(mtcars, aes(x = hp, y = mpg)) +
+  geom_point() +
+  labs(title = "Scatter Plot (ggplot2)", x = "Horsepower", y = "Miles per Gallon") +
+  theme_minimal()
+print(scatter_plot)
+dev.off()
+
+# 3. Bar plot (base R)
+
+barplot(table(mtcars$cyl),
+        main = "Bar Plot (Base R)",
+        xlab = "Number of Cylinders",
+        ylab = "Frequency")
+
+
+# 4. Bar plot (ggplot2)
+dev.new()
+bar_plot <- ggplot(mtcars, aes(x = as.factor(cyl))) +
+  geom_bar() +
+  labs(title = "Bar Plot (ggplot2)", x = "Number of Cylinders", y = "Frequency") +
+  theme_minimal()
+print(bar_plot)
+dev.off()
+
+# 5. Box plot (base R)
+dev.new()
+boxplot(mpg ~ cyl, data = mtcars,
+        main = "Box Plot (Base R)",
+        xlab = "Number of Cylinders",
+        ylab = "Miles per Gallon")
+dev.off()
+
+# 6. Box plot (ggplot2)
+dev.new()
+box_plot <- ggplot(mtcars, aes(x = as.factor(cyl), y = mpg)) +
+  geom_boxplot() +
+  labs(title = "Box Plot (ggplot2)", x = "Number of Cylinders", y = "Miles per Gallon") +
+  theme_minimal()
+print(box_plot)
+dev.off()
+
+# 7. Histogram (base R)
+
+hist(mtcars$mpg,
+     main = "Histogram (Base R)",
+     xlab = "Miles per Gallon",
+     ylab = "Frequency")
+
+# 8. Histogram (ggplot2)
+dev.new()
+histogram <- ggplot(mtcars, aes(x = mpg)) +
+  geom_histogram(binwidth = 2) +
+  labs(title = "Histogram (ggplot2)", x = "Miles per Gallon", y = "Frequency") +
+  theme_minimal()
+print(histogram)
+dev.off()
+
+# 9. Density plot (base R)
+plot(density(mtcars$mpg),
+     main = "Density Plot (Base R)",
+     xlab = "Miles per Gallon",
+     ylab = "Density")
+
+# 10. Density plot (ggplot2)
+dev.new()
+density_plot <- ggplot(mtcars, aes(x = mpg)) +
+  geom_density() +
+  labs(title = "Density Plot (ggplot2)", x = "Miles per Gallon", y = "Density") +
+  theme_minimal()
+print(density_plot)
+dev.off()
