@@ -1,0 +1,47 @@
+
+# Load required libraries
+library(ggplot2)
+library(hexbin)
+library(vegan)
+library(gplots)
+
+# Hexagonal binning plot
+data(diamonds)
+
+hex_plot <- ggplot(diamonds, aes(x = carat, y = price)) +
+  geom_hex(bins = 50) +
+  scale_fill_gradient(low = "white", high = "darkblue") +
+  labs(title = "Hexagonal binning plot",
+       x = "Carat",
+       y = "Price")
+print(hex_plot)
+x11()
+
+# Box plot with jittered points
+data(mpg)
+
+box_jitter_plot <- ggplot(mpg, aes(x = class, y = hwy)) +
+  geom_boxplot(aes(fill = class)) +
+  geom_jitter(width = 0.2, size = 0.5, alpha = 0.5) +
+  labs(title = "Box plot with jittered points",
+       x = "Vehicle class",
+       y = "Highway miles per gallon")
+
+x11()
+
+
+# Heatmap
+data(mtcars)
+
+scaled_mtcars <- as.matrix(scale(mtcars))
+
+heatmap.2(scaled_mtcars,
+          scale = "none",
+          trace = "none",
+          Colv = NA,
+          col = colorRampPalette(c("blue", "white", "red"))(25),
+          xlab = "Variables",
+          ylab = "Car models",
+          main = "Heatmap")
+print(heatmap.2)
+x11()
